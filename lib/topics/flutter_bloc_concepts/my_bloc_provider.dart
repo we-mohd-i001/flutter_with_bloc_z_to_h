@@ -31,10 +31,7 @@ class MyBlocProvider extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              Colors.greenAccent,
-              Colors.white
-            ],
+            colors: [Colors.greenAccent, Colors.white],
           ),
         ),
         height: size.height,
@@ -93,6 +90,7 @@ class MyBlocProvider extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 FloatingActionButton(
+                  tooltip: 'Increment',
                   elevation: elevation,
                   onPressed: () {
                     BlocProvider.of<CounterCubit>(context).increment();
@@ -103,6 +101,7 @@ class MyBlocProvider extends StatelessWidget {
                   width: 28,
                 ),
                 FloatingActionButton(
+                  tooltip: 'Decrement',
                   elevation: elevation,
                   onPressed: () {
                     BlocProvider.of<CounterCubit>(context).decrement();
@@ -114,24 +113,32 @@ class MyBlocProvider extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            ElevatedButton(
+            ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                   elevation: elevation, backgroundColor: Colors.greenAccent),
               onPressed: () {
                 BlocProvider.of<CounterCubit>(context).increaseTen();
               },
-              child: Text(
+              icon: Icon(
+                Icons.add_circle,
+                color: Colors.green.shade900,
+              ),
+              label: Text(
                 'Increase  by 10',
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
-            ElevatedButton(
+            ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                   elevation: elevation, backgroundColor: Colors.white70),
               onPressed: () {
                 BlocProvider.of<CounterCubit>(context).decreaseTen();
               },
-              child: Text(
+              icon: Icon(
+                Icons.remove_circle,
+                color: Colors.red.shade800,
+              ),
+              label: Text(
                 'Decrease by 10',
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
