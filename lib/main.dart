@@ -1,7 +1,15 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_with_bloc_z_to_h/topics/flutter_bloc_concepts/my_bloc_provider.dart';
+import 'package:flutter_with_bloc_z_to_h/topics/route_management/route_management_page.dart';
+import 'package:flutter_with_bloc_z_to_h/topics/route_management/routes/app_router.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  HydratedBloc.storage = await HydratedStorage.build(
+      storageDirectory: await getApplicationDocumentsDirectory());
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -11,6 +19,7 @@ void main() {
       routes: {
         '/': (context) => const MyApp(),
         '/cubit': (context) => const MyBlocProviderParent(),
+        '/route': (context) => RouteManagementPage(appRouter: AppRouter(), connectivity: Connectivity(),),
       },
     ),
   );
@@ -59,8 +68,8 @@ class MyApp extends StatelessWidget {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     elevation: 16, backgroundColor: Colors.white10),
-                onPressed: () => Navigator.pushNamed(context, '/cubit'),
-                child: Text('Go To Cubit' , style: Theme.of(context).textTheme.titleLarge,),
+                onPressed: () => Navigator.pushNamed(context, '/route'),
+                child: Text('Go To Route Management' , style: Theme.of(context).textTheme.titleLarge,),
               ),
             ),
             const SizedBox(
