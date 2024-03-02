@@ -1,6 +1,7 @@
 import 'dart:convert';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+
 part 'counter_state.dart';
 
 class CounterCubitNew extends Cubit<CounterState> with HydratedMixin{
@@ -20,14 +21,6 @@ class CounterCubitNew extends Cubit<CounterState> with HydratedMixin{
 
   @override
   Map<String, dynamic>? toJson(CounterState state) {
-    addError(Exception('Cache failed'), StackTrace.current);
-    onError(Exception('Cache Failed'), StackTrace.current);
     return state.toMap();
-  }
-
-  @override
-  void onChange(Change<CounterState> change) {
-    print(change);
-    super.onChange(change);
   }
 }
