@@ -93,7 +93,8 @@ class MyBlocProvider extends StatelessWidget {
                   tooltip: 'Increment',
                   elevation: elevation,
                   onPressed: () {
-                    BlocProvider.of<CounterCubit>(context).increment();
+                    // BlocProvider.of<CounterCubit>(context).increment();
+                    context.read<CounterCubit>().increment();
                   },
                   child: const Icon(Icons.add),
                 ),
