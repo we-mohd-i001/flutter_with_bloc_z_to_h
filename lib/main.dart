@@ -1,6 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_with_bloc_z_to_h/topics/flutter_bloc_concepts/my_bloc_provider.dart';
+import 'package:flutter_with_bloc_z_to_h/topics/route_management/app_bloc_observer.dart';
 import 'package:flutter_with_bloc_z_to_h/topics/route_management/route_management_page.dart';
 import 'package:flutter_with_bloc_z_to_h/topics/route_management/routes/app_router.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -10,6 +11,7 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   HydratedBloc.storage = await HydratedStorage.build(
       storageDirectory: await getApplicationDocumentsDirectory());
+  Bloc.observer = AppBlocObserver();
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,

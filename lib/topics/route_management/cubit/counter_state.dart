@@ -27,4 +27,13 @@ class CounterState {
 
   factory CounterState.fromJson(String source) =>
       CounterState.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() {
+    return 'CounterState(counterValue: $counterValue, wasIncremented: $wasIncremented)';
+  }
+
+  void onError(Object error, StackTrace stackTrace){
+    print('$error, $stackTrace');
+  }
 }
